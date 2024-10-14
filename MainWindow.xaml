@@ -1,0 +1,87 @@
+﻿<Window x:Class="StudentsCoursesApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentsCoursesApp"
+        mc:Ignorable="d"
+        Title="Students courses" Height="500" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Students">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Left" Width="275">
+                        <StackPanel>
+                            <TextBlock Text="First Name" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                            <TextBox x:Name="FirstNameBox" />
+                            <TextBlock Text="Last Name" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                            <TextBox x:Name="LastNameBox" />
+                            <TextBlock Text="Date of birth" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                            <DatePicker x:Name="DateOfBirthPicker" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button x:Name="AddStudentButton" Margin="4,10,4,0" Click="AddStudentButton_Click">Add</Button>
+                            <Button x:Name="RemoveStudentButton" Margin="4,10,4,0" Click="RemoveStudentButton_Click">Remove</Button>
+                            <Button x:Name="UpdateStudentButton" Margin="4,10,4,0" Click="UpdateStudentButton_Click">Update</Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <DataGrid x:Name="StudentsDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Margin="280,0,0,0" SelectionChanged="StudentsDataGrid_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Courses">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Left" Width="275">
+                        <StackPanel>
+                            <TextBlock Text="Course name" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                            <TextBox x:Name="CourseNameBox"/>
+                            <TextBlock Text="Credits" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                            <TextBox x:Name="CreditsBox" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button x:Name="AddCourseButton" Margin="4,10,4,0" Click="AddCourseButton_Click">Add</Button>
+                            <Button x:Name="RemoveCourseButton"  Margin="4,10,4,0" Click="RemoveCourseButton_Click">Remove</Button>
+                            <Button x:Name="UpdateCourseButton"  Margin="4,10,4,0" Click="UpdateCourseButton_Click">Update</Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <DataGrid x:Name="CoursesDataGrid"  d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Margin="280,0,0,0" SelectionChanged="CoursesDataGrid_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Course registrations">
+                <Grid>
+                    <StackPanel Margin="0,0,0,196">
+                        <DataGrid x:Name="EnrollmentsDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="EnrollmentsDataGrid_SelectionChanged" />
+                    </StackPanel>
+                    <StackPanel Margin="0,245,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Student:" Grid.Column="0" Grid.Row="0" Style="{DynamicResource MaterialDesignBody1TextBlock}" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Course:" Grid.Column="0" Grid.Row="1" Style="{DynamicResource MaterialDesignBody1TextBlock}" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Grade:" Grid.Column="0" Grid.Row="3" Style="{DynamicResource MaterialDesignBody1TextBlock}" HorizontalAlignment="Left"/>
+                            <ComboBox x:Name="StudentsComboBox" Grid.Column="1" Grid.Row="0" SelectionChanged="StudentsComboBox_SelectionChanged"/>
+                            <ComboBox x:Name="CourseComboBox" Grid.Column="1" Grid.Row="1" SelectionChanged="CourseComboBox_SelectionChanged"/>
+                            <ComboBox x:Name="GradeComboBox" Grid.Column="1" Grid.Row="2">
+                                <TextBlock Text="2"/>
+                                <TextBlock Text="3"/>
+                                <TextBlock Text="4"/>
+                                <TextBlock Text="5"/>
+                            </ComboBox>
+                        </Grid>
+                        <Button x:Name="AddEnrollmentButton" VerticalAlignment="Top" Content="Add" Margin="0,3,0,3" Click="AddEnrollmentButton_Click"/>
+                        <Button x:Name="DeleteEnrollmentButton" VerticalAlignment="Top" Content="Delete" Click="DeleteEnrollmentButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        </TabControl>
+
+    </Grid>
+</Window>
